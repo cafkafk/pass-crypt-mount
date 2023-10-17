@@ -39,7 +39,6 @@
         pass-crypt-mount = with final; stdenvNoCC.mkDerivation (finalAttrs: {
           pname = "pass-crypt-mount";
           version = "${version}";
-          name = with finalAttrs; "${pname}-${version}";
 
           src = ./.;
 
@@ -115,7 +114,6 @@
             test = stdenv.mkDerivation (finalAttrs: {
               pname = "pass-crypt-mount";
               version = "${version}";
-              name = with finalAttrs; "${pname}-${version}";
 
               buildInputs = [ pass-crypt-mount makeWrapper fish pass ripgrep udisks cryptsetup sudo util-linux];
 
