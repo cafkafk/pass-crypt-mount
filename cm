@@ -155,6 +155,6 @@ if set --query _flag_list
 
     echo -e "\n### Disk ###"
     # BUG: output is broken if you have multiple luks partitions on one disk
-    lsblk --output NAME,FSTYPE,UUID,MOUNTPOINT | grep --color=never -B 1 crypto_LUKS
+    lsblk --output NAME,FSTYPE,UUID,MOUNTPOINT | rg --color=never -B 1 crypto_LUKS
     return 0
 end
