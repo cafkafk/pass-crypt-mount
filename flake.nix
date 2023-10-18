@@ -64,7 +64,7 @@
                 runHook preInstall
 
                 mkdir -p $out/bin
-                cp $src/pass-crypt-mount.fish $out/bin/pass-crypt-mount
+                cp $src/pass-crypt-mount.fish $out/bin/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/bin/cm
 
                 runHook postInstall
@@ -73,7 +73,7 @@
               postInstall = ''
                 wrapProgram "$out/bin/cm" \
                   --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
-                wrapProgram "$out/bin/pass-crypt-mount" \
+                wrapProgram "$out/bin/crypt-mount" \
                   --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
               '';
 
@@ -91,6 +91,8 @@
                 mainProgram = "cm";
               };
             });
+          pass-crypt-mount = self.packages.${system}.default;
+          pass-with-crypt-mount = pkgs.pass.withExtensions (e: [self.packages.${system}.pass-crypt-mount]);
         };
 
         nixosModules.pass-crypt-mount = {pkgs, ...}: {
