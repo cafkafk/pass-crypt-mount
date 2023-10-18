@@ -66,6 +66,8 @@
                 mkdir -p $out/bin
                 cp $src/pass-crypt-mount.fish $out/bin/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/bin/cm
+                cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/crypt-mount
+                cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/cm
 
                 runHook postInstall
               '';
