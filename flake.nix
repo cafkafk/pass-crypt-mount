@@ -66,6 +66,9 @@
                 mkdir -p $out/bin
                 cp $src/pass-crypt-mount.fish $out/bin/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/bin/cm
+
+                mkdir -p $out/lib/password-store/extensions/
+
                 cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/cm
 
