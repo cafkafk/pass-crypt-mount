@@ -56,9 +56,9 @@
 
               unpackPhase = ":";
 
-              buildInputs = with pkgs; [makeBinaryWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
+              nativeBuildInputs = with pkgs; [makeBinaryWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
 
-              buildPhase = "";
+              dontBuild = true;
 
               installPhase = ''
                 runHook preInstall
