@@ -56,7 +56,7 @@
 
               unpackPhase = ":";
 
-              nativeBuildInputs = with pkgs; [makeBinaryWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
+              buildInputs = with pkgs; [makeBinaryWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
 
               dontBuild = true;
 
