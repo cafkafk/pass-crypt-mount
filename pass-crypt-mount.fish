@@ -149,7 +149,7 @@ if set --query _flag_unmount
     return 0
 end
 
-if set --query _flag_list
+function list
     echo -e "### Pass ###"
     pass show disk/luks/uuid
 
@@ -158,3 +158,11 @@ if set --query _flag_list
     lsblk --output NAME,FSTYPE,UUID,MOUNTPOINT | rg --color=never -B 1 crypto_LUKS
     return 0
 end
+
+if set --query _flag_list
+    list
+    return 0
+end
+
+# Default behavior for when no flags are provided
+list
