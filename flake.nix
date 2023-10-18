@@ -70,12 +70,12 @@
                 runHook postInstall
               '';
 
-              postInstall = ''
-                wrapProgram "$out/bin/cm" \
-                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
-                wrapProgram "$out/bin/crypt-mount" \
-                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
-              '';
+              #postInstall = ''
+              #  wrapProgram "$out/bin/cm" \
+              #    --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
+              #  wrapProgram "$out/bin/crypt-mount" \
+              #    --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
+              #'';
 
               doInstallCheck = true;
 
