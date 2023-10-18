@@ -56,7 +56,7 @@
 
               unpackPhase = ":";
 
-              buildInputs = with pkgs; [makeBinaryWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
+              buildInputs = with pkgs; [makeWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
 
               dontBuild = true;
 
@@ -73,8 +73,8 @@
 
                 mkdir -p $out/lib/password-store/extensions/
 
-                cp $out/bin/crypt-mount $out/lib/password-store/extensions/crypt-mount
-                cp $out/bin/cm $out/lib/password-store/extensions/cm
+                cp $out/bin/crypt-mount $out/lib/password-store/extensions/crypt-mount.bash
+                cp $out/bin/cm $out/lib/password-store/extensions/cm.bash
 
                 runHook postInstall
               '';
