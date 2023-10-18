@@ -66,21 +66,18 @@
                 mkdir -p $out/bin
                 cp $src/pass-crypt-mount.fish $out/bin/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/bin/cm
+                wrapProgram "$out/bin/cm" \
+                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
+                wrapProgram "$out/bin/crypt-mount" \
+                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
 
                 mkdir -p $out/lib/password-store/extensions/
 
-                cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/crypt-mount
-                cp $src/pass-crypt-mount.fish $out/lib/password-store/extensions/cm
+                cp $out/bin/crypt-mount $out/lib/password-store/extensions/crypt-mount
+                cp $out/bin/cm $out/lib/password-store/extensions/cm
 
                 runHook postInstall
               '';
-
-              #postInstall = ''
-              #  wrapProgram "$out/bin/cm" \
-              #    --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
-              #  wrapProgram "$out/bin/crypt-mount" \
-              #    --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
-              #'';
 
               doInstallCheck = true;
 
