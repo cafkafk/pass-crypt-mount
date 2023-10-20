@@ -56,7 +56,7 @@
 
               unpackPhase = ":";
 
-              buildInputs = with pkgs; [makeWrapper fish pass ripgrep udisks cryptsetup sudo util-linux strace];
+              buildInputs = with pkgs; [makeWrapper fish pass ripgrep udisks cryptsetup util-linux strace];
 
               dontBuild = true;
 
@@ -67,9 +67,9 @@
                 cp $src/pass-crypt-mount.fish $out/bin/crypt-mount
                 cp $src/pass-crypt-mount.fish $out/bin/cm
                 wrapProgram "$out/bin/cm" \
-                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
+                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup util-linux]}"
                 wrapProgram "$out/bin/crypt-mount" \
-                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup sudo util-linux]}"
+                  --prefix PATH : "${lib.makeBinPath [fish pass ripgrep udisks cryptsetup util-linux]}"
 
                 mkdir -p $out/lib/password-store/extensions/
 
