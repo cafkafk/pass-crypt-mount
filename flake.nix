@@ -56,7 +56,8 @@
 
               unpackPhase = ":";
 
-              buildInputs = with pkgs; [makeWrapper fish pass ripgrep udisks cryptsetup util-linux strace];
+              buildInputs = with pkgs; [makeWrapper fish pass ripgrep udisks cryptsetup util-linux];
+              nativeBuildInputs = with pkgs; [fish pass ripgrep udisks cryptsetup util-linux];
 
               dontBuild = true;
 
